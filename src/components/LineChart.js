@@ -40,9 +40,10 @@ const LineChart = ({ coinId, cryptoDetails, timePeriod }) => {
       </div>
     );
 
-  const coinTimeStamp = coinHistory?.history?.map((history) =>
+  const coinTimeStamp = coinHistory?.history?.slice(0, 20).map((history) =>
     moment.unix(history.timestamp).format("MM/DD/YY")
   );
+
   const coinPrice = coinHistory?.history?.map((history) => history.price);
 
   const data = {
@@ -54,6 +55,8 @@ const LineChart = ({ coinId, cryptoDetails, timePeriod }) => {
         data: coinPrice,
         backgroundColor: "#0071bd",
         borderColor: "#0071bd",
+        borderWidth : 1,
+        
       },
     ],
   };

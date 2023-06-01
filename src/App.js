@@ -18,7 +18,7 @@ function App() {
       <aside className="flex-1 bg-navbar md:flex-[0.18] w-full min-w-[300px]">
         <Navbar />
       </aside>
-      <main className="flex-1 md:flex-[0.84] w-full mr-3">
+      <main className="flex-1 md:flex-[0.84] w-full mr-3 max-md:mt-16">
         <Layout className="p-5 xl:ml-4">
           <Routes>
             <Route exact path={pages.homePage} element={<HomePage />} />

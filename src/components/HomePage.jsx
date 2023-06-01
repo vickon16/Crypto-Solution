@@ -26,32 +26,32 @@ const HomePage = () => {
         Global Crypto Stats
       </Title>
 
-      <Row className="gap-4 sm:gap-0">
-        <Col sm={12}>
+      <Row>
+        <Col span={11} className="ml-3 mb-3">
           <Statistic
             title="Total Cryptocurrencies"
             value={globalStats?.total}
           />
         </Col>
-        <Col sm={12}>
+        <Col span={11} className="ml-3 mb-3">
           <Statistic
             title="Total Markets"
             value={millify(globalStats?.totalMarkets)}
           />
         </Col>
-        <Col sm={12}>
+        <Col span={11} className="ml-3 mb-3">
           <Statistic
             title="Total Market Cap"
             value={millify(globalStats?.totalMarketCap)}
           />
         </Col>
-        <Col sm={12}>
+        <Col span={11} className="ml-3 mb-3">
           <Statistic
             title="Total Exchanges"
             value={millify(globalStats?.totalExchanges)}
           />
         </Col>
-        <Col sm={12}>
+        <Col span={11} className="ml-3 mb-3">
           <Statistic
             title="Total 24h Volume"
             value={millify(globalStats?.total24hVolume)}

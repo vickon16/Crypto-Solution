@@ -24,7 +24,7 @@ const Cryptocurrencies = ({ simplified }) => {
     }
     
     setFilteredData([])
-  }, [searchTerm, coinList]);
+  }, [searchTerm]);
 
   if (isFetching)
     return (

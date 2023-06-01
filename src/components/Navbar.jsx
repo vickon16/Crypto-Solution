@@ -17,20 +17,22 @@ function getItem(label, key, icon) {
   };
 }
 
-const items = navMenuItems.map(({ title, link, Icon }) =>
-  getItem(
-    <Link className={linkStyles} to={link}>
-      {title}
-    </Link>,
-    link,
-    <Icon className={iconStyles} />
-  )
-);
+
 
 const Navbar = () => {
   const { pathname } = useLocation();
   const [activeMenu, setActiveMenu] = useState(pathname);
   const [toggleMenu, setToggleMenu] = useState(false);
+
+  const items = navMenuItems.map(({ title, link, Icon }) =>
+    getItem(
+      <Link className={linkStyles} to={link}>
+        {title}
+      </Link>,
+      link,
+      <Icon className={iconStyles} />
+    )
+);
 
   useEffect(() => {
     setActiveMenu(pathname);
@@ -38,7 +40,7 @@ const Navbar = () => {
 
   return (
     <nav className="md:fixed left-0 md:h-screen bg-navbar top-0">
-      <div className="bg-navbar flex_between p-5 gap-x-3 w-full">
+      <div className="bg-navbar flex_between p-5 gap-x-3 w-full max-md:fixed z-[10] top-0">
         <div className="flex items-center gap-x-2">
           <Avatar src={icon} />
           <Typography.Title className="!mb-0 !text-xl md:!text-2xl">
@@ -48,19 +50,23 @@ const Navbar = () => {
           </Typography.Title>
         </div>
 
-        <MenuOutlined
-          className="text-white text-xl flex md:hidden cursor-pointer"
-          onClick={() => setToggleMenu((prev) => !prev)}
-        />
+        <div className="md:hidden relative">
+          <MenuOutlined
+            className="text-white text-xl flex  cursor-pointer"
+            onClick={() => setToggleMenu((prev) => !prev)}
+          />
 
-        <Menu
-          className={`flex fixed top-[4.5rem] ${
-            toggleMenu ? "right-0" : "-right-full"
-          } md:hidden flex-col transition-all duration-300 ease-in-out z-[10]`}
-          theme="dark"
-          items={items}
-          selectedKeys={[activeMenu]}
-        />
+          <Menu
+            className={`absolute top-[2.5rem] ${
+              toggleMenu ? "-right-4" : "-right-[400px]"
+            } flex-col transition-all duration-300 ease-in-out z-[10]`}
+            theme="dark"
+            items={items}
+            selectedKeys={[activeMenu]}
+            onClick = {e => setToggleMenu(false)}
+          />
+
+        </div>
       </div>
 
       <Menu
