@@ -24,6 +24,7 @@ const Cryptocurrencies = ({ simplified }) => {
     }
     
     setFilteredData([])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm]);
 
   if (isFetching)
